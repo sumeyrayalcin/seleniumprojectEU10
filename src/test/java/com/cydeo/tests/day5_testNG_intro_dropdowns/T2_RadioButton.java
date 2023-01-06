@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.concurrent.TimeUnit;
 
 public class T2_RadioButton {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         //TC #2: Radiobutton handling
         //1. Open Chrome browser
         WebDriver driver = WebDriverFactory.getDriver("chrome");
