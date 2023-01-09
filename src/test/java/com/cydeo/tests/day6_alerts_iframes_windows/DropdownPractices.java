@@ -5,21 +5,30 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 public class DropdownPractices {
-    @Test
-            public void dropdown_Task5() throws InterruptedException {
+    public  WebDriver driver;
 
+    @BeforeMethod
+    public void setUpMethod(){
         //TC #5: Selecting state from State dropdown and verifying result
         //1. Open Chrome browser
         //2. Go to http://practice.cybertekschool.com/dropdown
 
-        WebDriver driver = WebDriverFactory.getDriver("chrome");
+       driver = WebDriverFactory.getDriver("chrome");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://practice.cybertekschool.com/dropdown");
+
+
+    }
+    @Test
+            public void dropdown_Task5() throws InterruptedException {
+
 
         //we located the dropdown and it is ready to use
         Select stateDropdown = new Select(driver.findElement(By.xpath("//select[@id='state']")));
@@ -50,15 +59,39 @@ public class DropdownPractices {
     }
     @Test
     public void dropdown_task6(){
-        //TC #6: Selecting date on dropdown and verifying
-        //1. Open Chrome browser
-        //2. Go to https://practice.cydeo.com/dropdown
-        //3. Select “December 1st, 1923” and verify it is selected.
+
+        //3. Select “December 1st, 1924” and verify it is selected.
+
+        Select yearDropdown = new Select(driver.findElement(By.xpath("//select[@id='year']")));
+        Select monthDropdown = new Select(driver.findElement(By.xpath("//select[@id='month']")));
+        Select dayDropdown = new Select(driver.findElement(By.xpath("//select[@id='day']")));
+
+
         //Select year using  : visible text
         //Select month using   : value attribute
         //Select day using : index number
 
+        yearDropdown.selectByVisibleText("1924");
+        monthDropdown.selectByValue("11");
+        dayDropdown.selectByIndex(0);
+
+        String expectedYear = "1924";
+        String expectedMonth = "December";
+        String expectedDay = "1";
+
+        String actualYear = yearDropdown.getFirstSelectedOption().getText();
+        String actualMonth = monthDropdown.getFirstSelectedOption().getText();
+        String actualDay = dayDropdown.getFirstSelectedOption().getText();
 
 
+        Assert.assertTrue(actualYear.equals(expectedYear));
+        Assert.assertEquals(expectedMonth,actualMonth);
+        Assert.assertEquals(expectedDay,actualDay);
+
+    }
+
+    @AfterMethod
+    public void tearDownMethod(){
+        driver.close();
     }
 }
