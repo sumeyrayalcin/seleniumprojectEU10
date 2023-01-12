@@ -46,7 +46,7 @@ public class T3_CRM_LOGIN {
 
         //6. Verify title is as expected:
         //Expected: Portal
-        BrowserUtils.verifyTitle(driver, "Portal");
+        BrowserUtils.verifyTitle(driver, "My tasks");
 
     }
 
