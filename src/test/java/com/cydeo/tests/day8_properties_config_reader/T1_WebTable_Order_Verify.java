@@ -41,7 +41,26 @@ public class T1_WebTable_Order_Verify {
 
         Assert.assertEquals(actualBobName, expectedBobName);
         //Expected: “Bob Martin”
+
+
         //3. Verify Bob Martin’s order date is as expected
         //Expected: 12/31/2021
+        // alternative locator to bobMartinDateCell = "//td[.='Bob Martin']/../td[5]"
+
+        WebElement bobMartinDateCell = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_orderGrid']//td[.='Bob Martin']//following-sibling::td[3]"));
+
+        String expectedBobDate = "12/31/2021";
+        String actualBobDate = bobMartinDateCell.getText();
+
+        Assert.assertEquals(expectedBobDate,actualBobDate);
+
+
+    }
+    //We use the utility method we created.
+    @Test
+    public void test2(){
+
+
+
     }
 }
