@@ -16,5 +16,11 @@ public class SingletonPractice {
         System.out.println("str3 = " + str3);
 
     }
+    @Test (priority = 1)
+    public void singleton_understanding_test2(){
+        String str4 = Singleton.getWord();
+        System.out.println("str4 = " + str4);
+    }
+
 
 }
