@@ -22,7 +22,7 @@ public class T1_Circle_Drag_N_Drop {
         WebElement bigCircle = Driver.getDriver().findElement(By.id("droptarget"));
 
         //2. Drag and drop the small circle to bigger circle.
-        Actions actions = new Actions();
+        Actions actions = new Actions(Driver.getDriver());
 
     }
     }
