@@ -2,6 +2,7 @@ package com.cydeo.tests.day11_actions_jsexecutor_practice;
 
 import com.cydeo.utilities.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
@@ -25,8 +26,32 @@ public class ActionsPractices {
 
 
         //4- Scroll using Actions class “moveTo(element)” method
-        actions.moveToElement(cydeoLink).perform();
+        actions.moveToElement(cydeoLink).perform();  //go to specific element and prefer this
 
+        //5- Scroll back up to “Home” link using PageUP button
+        actions.sendKeys(Keys.PAGE_UP, Keys.PAGE_UP).perform(); // yapabilirsin ama optional yukaridaki tavsiye edilir
+
+
+        //Driver.getDriver().quit();  //copmlitly shut electrcty up
+        Driver.closeDriver();
+    }
+
+    @Test
+    public void test2(){
+        Driver.getDriver().get("https://practice.cydeo.com/");
+        Driver.closeDriver();
+    }
+
+    @Test
+    public void test3(){
+        Driver.getDriver().get("https://practice.cydeo.com/");
+        Driver.closeDriver();
+    }
+
+    @Test
+    public void test4(){
+        Driver.getDriver().get("https://practice.cydeo.com/");
+        Driver.closeDriver();
     }
 
     //
