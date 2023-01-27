@@ -9,9 +9,6 @@ import org.testng.annotations.Test;
 
 public class Day8_Task_Gas_Mileage {
 
-
-
-
     @Test
     public void GasMileageCalculatorTest(){
 //1. Add a new class GasMileageCalculatorTest
@@ -37,6 +34,38 @@ public class Day8_Task_Gas_Mileage {
         String actualTitle = Driver.getDriver().getTitle();
 
         Assert.assertEquals(actualTitle, expectedTitle);
+
+//6. Locate, clear and type “7925” into “Current odometer” field
+        WebElement odometerButton = Driver.getDriver().findElement(By.xpath("//input[@id='mucodreading']"));
+        odometerButton.clear();
+        odometerButton.sendKeys("7925");
+
+
+//7. Locate, clear and type “7550” into “Previous odometer” field
+        WebElement PreviousodometerButton = Driver.getDriver().findElement(By.xpath("//input[@id='mupodreading']"));
+        PreviousodometerButton.clear();
+        PreviousodometerButton.sendKeys("7550");
+
+//8. Locate, clear and type “16” into “Gas added” field
+        WebElement GasAddedButton = Driver.getDriver().findElement(By.xpath("//input[@id='mugasputin']"));
+        GasAddedButton.clear();
+        GasAddedButton.sendKeys("16");
+
+//9. Locate, clear and type “3.55” into “Gas price” field
+        WebElement GaspriceButton = Driver.getDriver().findElement(By.xpath("//input[@id='mugasprice']"));
+        GaspriceButton.clear();
+        GaspriceButton.sendKeys("3.55");
+
+//10. Click on Calculate button
+        WebElement CalculateButton = Driver.getDriver().findElement(By.xpath("(//input[@value='Calculate'])[2]"));
+        CalculateButton.click();
+
+
+//11. Verify mpg value is as expected:
+//Expected value: “23.44 mpg”
+
+        String expectedValue =Driver.getDriver().findElement(By.xpath("//b[.='23.44 km/L  or 4.27  L/100 km ']")).getText();
+        Assert.assertTrue(expectedValue.contains("23.44"));
 
 
 
